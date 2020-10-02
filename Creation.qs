@@ -52,8 +52,7 @@
 
         SetEqualProbabiltyToEachStiker(cube);
         ColorFaces(cube);
-        //ColorEachStiker(cube);
-
+        
         return cube;
     }
     
