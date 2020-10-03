@@ -9,8 +9,10 @@ class Cube():
         self.__warp_to_3d_cube()
  
     def __init_stikers(self, stikers):
-        self._stikers = [[i]*4 for i in range(6)]
-        
+        if stikers is None:
+            self._stikers = [[i]*4 for i in range(6)]
+        else:
+            self._stikers = stikers
         
     def __reset_structure(self):
         self._faces = [Face(face_stikers) for face_stikers in self._stikers]
