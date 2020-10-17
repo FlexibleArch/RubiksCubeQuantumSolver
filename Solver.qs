@@ -22,42 +22,41 @@ namespace Quantum.RubiqLib.Solver {
     
     operation ExacuteStep(cube : Cube, step :  Step) : Unit is Adj + Ctl
     {
-        Fact(Length(step!) == 2 , "Stop should be composed from two qubits");
+        let stepQubits = step!;
+        Fact(Length(stepQubits) == 2 , "Stop should be composed from two qubits");
 
-        Controlled RotateTop(step!, cube);
+        Controlled RotateTop(stepQubits, cube);
 
         within {
-            X(step[1]);
+            X(stepQubits[1]);
         } 
         apply {
-            Controlled RotateFront(step!, cube);
+            Controlled RotateFront(stepQubits, cube);
         }
 
         within {
-            X(step[0]);
+            X(stepQubits[0]);
         }        
         apply {
-            Controlled RotateLeft(step!, cube);
+            Controlled RotateLeft(stepQubits, cube);
         }
     }
 
     operation ExacuteStepI(cube : Cube, step :  Int) : Unit is Adj + Ctl
     {
-        Fact(step < 4 , " There are four possible moves in each step.");
-   
-        ///if (step == 0) do nothiong
+        Fact(step < 4 , "There are four possible moves in each step.");
+        
+        // if (step == 0) do nothiong
         if (step == 1) { RotateFront(cube); }
-        if (step == 2) { RotateLeft(step!, cube); }
-        if (step == 3) { RotateTop(step!, cube); }
+        if (step == 2) { RotateLeft(cube); }
+        if (step == 3) { RotateTop(cube); }
     }
 
     operation ExacuteInstructions(cube : Cube, instructions :  Step[]) : Unit is Adj + Ctl
     {
-        let stepsCount = Length(instructions);
         for (step in instructions)
         {
             ExacuteStep(cube, step);
         }
     }
-
 }
