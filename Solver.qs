@@ -15,7 +15,9 @@ namespace Quantum.RubiqLib.Solver {
 
     operation CheckIfSloved(cube : Cube, target : Qubit) : Unit is Adj + Ctl
     {
-        Controlled X([cube::innerFace[0]], target);
+        Controlled X([cube::innerFace[1]], target);
+        H(cube::innerFace[1]);
+        H(target);
         Controlled X([cube::innerFace[1]], target);
         X(target);
     }
