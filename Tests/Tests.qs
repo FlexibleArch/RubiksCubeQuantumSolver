@@ -40,7 +40,7 @@
     operation DevidProbEqaullyToTheFist3StagesTest() : Unit {
 
         using (register = Qubit[2]) {
-            DevidProbEqaullyToTheFist3Stages(register);
+            DivideProbEquallyToTheFirst3Stages(register);
             AssertMeasurementProbability([PauliZ, PauliZ], register, Zero, 1./3., "ads", 0.1);
 
             ResetAll(register);

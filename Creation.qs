@@ -9,7 +9,7 @@
 
     newtype Cube = (innerFace: Qubit[], interFace: Qubit[]);
 
-    operation DevidProbEqaullyToTheFist3Stages(q : Qubit[]) : Unit is Adj + Ctl
+    operation DivideProbEquallyToTheFirst3Stages(q : Qubit[]) : Unit is Adj + Ctl
     {
             H(q[0]);
             CNOT(q[1], q[0]);
@@ -40,7 +40,7 @@
     {
         let interFace = cube::interFace;
         
-        DevidProbEqaullyToTheFist3Stages(interFace[1...]);
+        DivideProbEquallyToTheFirst3Stages(interFace[1...]);
         H(interFace[0]);
            
         ApplyToEachCA(H(_), cube::innerFace);
