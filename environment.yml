@@ -77,14 +77,14 @@ dependencies:
   - zipp=3.1.0=py_0
   - zlib=1.2.11=h62dcd97_4
   - pip:
-    - azure-quantum==0.12.2008.2513
+    - azure-quantum==0.13.20102604
     - cycler==0.10.0
     - kiwisolver==1.2.0
     - matplotlib==3.3.1
     - numpy==1.19.1
     - pillow==7.2.0
-    - qsharp-chemistry==0.12.2008.2513
-    - qsharp-core==0.12.2008.2513
+    - qsharp-chemistry==0.13.20102604
+    - qsharp-core==0.13.20102604
     - scipy==1.5.2
 prefix: C:\Users\itaykauf\Anaconda3\envs\qs-env
 

@@ -17,7 +17,7 @@ def translate_quantum_phase_into_cube_state(cube_state_str):
     stikers_phases = [float(re.findall(r"\[([0-9.\- rad]+)\]", s)[1].split()[0]) for s in stikers_state_strs]
     stikers_color_nums = [int(np.round(3 * phase / np.pi + 3)) for phase in stikers_phases]
 
-    return np.reshape(stikers_color_nums, (4, 6)).T.tolist()
+    return np.reshape(stikers_color_nums, (6, 4)).tolist()
 
 
 square_polygon = np.array([[1, 1, 0],
