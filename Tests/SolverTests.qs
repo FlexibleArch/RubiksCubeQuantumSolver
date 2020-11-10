@@ -28,39 +28,39 @@ namespace Quantum.Rubiq.SolverTests {
         Message("Succses!");
     }
 
-    operation prepaeQubitStep(stepQubits : Qubit[], step : Int) : Unit is Adj + Ctl
-    {
-        mutable state = [0., 0., 0., 0.];
-        state[step] = 1.0;
-        let op = StatePreparationPositiveCoefficients(state);
-        op(LittleEndian(stepQubits));
-    }
+    // operation prepaeQubitStep(stepQubits : Qubit[], step : Int) : Unit is Adj + Ctl
+    // {
+    //     mutable state = [0., 0., 0., 0.];
+    //     set state[step] = 1.0;
+    //     let op = StatePreparationPositiveCoefficients(state);
+    //     op(LittleEndian(stepQubits));
+    // }
 
-    @Test("QuantumSimulator")
-    operation ControllredStepShoudBeIdenticalToRegularExaction_Test() : Unit {
+    // @Test("QuantumSimulator")
+    // operation ControllredStepShoudBeIdenticalToRegularExaction_Test() : Unit {
 
-        using ((register, stepQubits) = (Qubit[5], Qubit[2])) {
-            for (step in 0 .. 4)
-            {
-                Message("Running {step}");
-                let cube = InitCube(register);
+    //     using ((register, stepQubits) = (Qubit[5], Qubit[2])) {
+    //         for (step in 0 .. 4)
+    //         {
+    //             Message("Running {step}");
+    //             let cube = InitCube(register);
 
-                within {
-                    prepaeQubitStep(stepQubits, step);
-                }
-                apply
-                {
-                    ExecuteStep(cube,stepQubits);
-                    Adjoint ExecuteStepI(cube, step);
-                }
-                // @TODO: check state is back 
+    //             within {
+    //                 prepaeQubitStep(stepQubits, step);
+    //             }
+    //             apply
+    //             {
+    //                 ExecuteStep(cube, stepQubits);
+    //                 Adjoint ExecuteStepI(cube, step);
+    //             }
+    //             // @TODO: check state is back 
 
-                ResetAll(register);
-                ResetAll(step);
-            }
-        }
-        Message("Succses!");
-    }
+    //             ResetAll(register);
+    //             ResetAll(step);
+    //         }
+    //     }
+    //     Message("Succses!");
+    // }
 
 
 

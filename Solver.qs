@@ -22,7 +22,7 @@ namespace Quantum.RubiqLib.Solver {
         X(target);
     }
     
-    operation ExacuteStep(cube : Cube, step :  Step) : Unit is Adj + Ctl
+    operation ExecuteStep(cube : Cube, step :  Step) : Unit is Adj + Ctl
     {
         let stepQubits = step!;
         Fact(Length(stepQubits) == 2 , "Stop should be composed from two qubits");
@@ -44,7 +44,7 @@ namespace Quantum.RubiqLib.Solver {
         }
     }
 
-    operation ExacuteStepI(cube : Cube, step :  Int) : Unit is Adj + Ctl
+    operation ExecuteStepI(cube : Cube, step :  Int) : Unit is Adj + Ctl
     {
         Fact(step < 4 , "There are four possible moves in each step.");
         
@@ -58,7 +58,7 @@ namespace Quantum.RubiqLib.Solver {
     {
         for (step in instructions)
         {
-            ExacuteStep(cube, step);
+            ExecuteStep(cube, step);
         }
     }
 }
